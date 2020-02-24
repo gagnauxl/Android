@@ -1,6 +1,5 @@
 package com.example.fragmentexample
 
-
 import android.media.Rating
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -59,5 +58,9 @@ class SimpleFragment : Fragment() {
         return rootView
     }
 
-
+    companion object {
+        fun newInstance(): SimpleFragment {
+            return SimpleFragment()
+        }
+    }
 }
