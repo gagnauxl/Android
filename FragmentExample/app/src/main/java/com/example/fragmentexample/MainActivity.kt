@@ -55,17 +55,18 @@ class MainActivity : AppCompatActivity() {
         // Check to see if the fragment is already showing.
         val simpleFragment = fragmentManager
             .findFragmentById(R.id.fragment_container) as SimpleFragment
-        if (simpleFragment != null) {
-            // Create and commit the transaction to remove the fragment.
-            val fragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.remove(simpleFragment).commit()
-        }
+
+        // Create and commit the transaction to remove the fragment.
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.remove(simpleFragment).commit()
+
         // Update the Button text.
         button.setText(R.string.open)
         // Set boolean flag to indicate fragment is closed.
         isFragmentDisplayed = false
     }
 
+    @Suppress("UNUSED_PARAMETER")
     fun onButtonClicked(view: View) {
         if (!isFragmentDisplayed) {
             displayFragment();
