@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/home_dest"
         android:name="com.example.android.codelabs.navigation.HomeFragment"
-        android:label="@string/home"
+        android:label="home3"
         tools:layout="@layout/home_fragment">
 
         <!-- TODO STEP 7.1 - Add action with transitions -->
