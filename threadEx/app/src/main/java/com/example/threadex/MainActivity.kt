@@ -41,6 +41,63 @@ class MainActivity : AppCompatActivity() {
         */
 
         // or with anonymous
+        // 1. version: use an object implementing the interface Runnable with anonymous inner class
+        // note: class can still access the properties of the outer class as LOG_TAG
+        /*
+        val runnable: Runnable = object : Runnable {
+            override fun run() {
+                for (i in 1..10) {
+                    if (stopThread) break
+                    if (i == 5) runOnUiThread { buttonStartThread.text = "50%" }
+                    Log.d(LOG_TAG, "${object {}.javaClass.enclosingMethod?.name.toString()}: $i")
+                    try {
+                        Thread.sleep(1000)
+                    } catch (e: InterruptedException) {
+                        e.printStackTrace()
+                    }
+                }
+                runOnUiThread { updateUIState(false) }
+            }
+        }
+        // start thread
+        Thread(runnable).start()
+        */
+
+        // 2.version: shorter
+        Thread(object : Runnable {
+            override fun run() {
+                for (i in 1..10) {
+                    if (stopThread) break
+                    if (i == 5) runOnUiThread { buttonStartThread.text = "50%" }
+                    Log.d(LOG_TAG, "${object {}.javaClass.enclosingMethod?.name.toString()}: $i")
+                    try {
+                        Thread.sleep(1000)
+                    } catch (e: InterruptedException) {
+                        e.printStackTrace()
+                    }
+                }
+                runOnUiThread { updateUIState(false) }
+            }
+        }).start()
+
+        // 3.version: even more shorter with lambda syntax
+
+        Thread(Runnable {
+            ->
+            for (i in 1..10) {
+                if (stopThread) break
+                if (i == 5) runOnUiThread { buttonStartThread.text = "50%" }
+                Log.d(LOG_TAG, "${object {}.javaClass.enclosingMethod?.name.toString()}: $i")
+                try {
+                    Thread.sleep(1000)
+                } catch (e: InterruptedException) {
+                    e.printStackTrace()
+                }
+            }
+            runOnUiThread { updateUIState(false) }
+        }).start()
+
+        // 4. version the shortest one
         Thread {
             for (i in 1..10) {
                 if (stopThread) break
@@ -54,6 +111,14 @@ class MainActivity : AppCompatActivity() {
             }
             runOnUiThread { updateUIState(false) }
         }.start()
+
+
+
+
+        Thread(Runnable {
+
+        }).start()
+
     }
 
     private fun updateUIState(isThreadStarted: Boolean) {
