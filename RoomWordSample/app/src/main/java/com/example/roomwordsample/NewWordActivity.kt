@@ -29,6 +29,7 @@ class NewWordActivity : AppCompatActivity() {
             }
             finish()
         }
+
     }
 
     companion object {

@@ -9,6 +9,7 @@ import kotlinx.coroutines.launch
 
 // Class extends AndroidViewModel and requires application as a parameter.
 class WordViewModel(application: Application) : AndroidViewModel(application) {
+    private val LOG_TAG = "HEXAGON-LOG::" + object {}.javaClass.enclosingClass?.simpleName
 
     // The ViewModel maintains a reference to the repository to get data.
     private val repository: WordRepository
@@ -17,14 +18,18 @@ class WordViewModel(application: Application) : AndroidViewModel(application) {
     // LiveData gives us updated words when they change.
     val allWords: LiveData<List<Word>>
 
+    val liveCounts: LiveData<Int>
+
     init {
         // Gets reference to WordDao from WordRoomDatabase to construct
         // the correct WordRepository.
-        Log.i("MVVMLOG", "WordViewModel.init: get access to DB, setup repository for access")
+        Log.d(LOG_TAG, "${object {}.javaClass.enclosingMethod?.name.toString()}: init ..")
         val wordsDao = WordRoomDatabase.getDatabase(application, viewModelScope).wordDao()
         repository = WordRepository(wordsDao)
         allWords = repository.allWords
         nr = 0
+        liveCounts = repository.liveCounts
+        Log.d(LOG_TAG, "${object {}.javaClass.enclosingMethod?.name.toString()}: Counts: ${liveCounts.value}")
     }
 
     /**
@@ -36,5 +41,18 @@ class WordViewModel(application: Application) : AndroidViewModel(application) {
      */
     fun insert(word: Word) = viewModelScope.launch {
         repository.insert(word)
+    }
+
+//    fun count() = viewModelScope.launch {
+//        Log.d(LOG_TAG, "${object {}.javaClass.enclosingMethod?.name.toString()}: Start Counting")
+//        val c=repository.count()
+//        Log.d(LOG_TAG, "${object {}.javaClass.enclosingMethod?.name.toString()}: Count finished: $c")
+//    }
+
+    fun count(): Int  {
+        Log.d(LOG_TAG, "${object {}.javaClass.enclosingMethod?.name.toString()}: Start Counting")
+        val c=repository.count()
+        Log.d(LOG_TAG, "${object {}.javaClass.enclosingMethod?.name.toString()}: Count finished: $c")
+        return c
     }
 }

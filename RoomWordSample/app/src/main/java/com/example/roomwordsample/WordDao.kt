@@ -8,6 +8,11 @@ import androidx.room.Query
 
 @Dao
 interface WordDao {
+    @Query("SELECT count(*) from word_table")
+    fun liveCount(): LiveData<Int>
+
+    @Query("SELECT count(*) from word_table")
+    fun count(): Int
 
     @Query("SELECT * from word_table ORDER BY word ASC")
     fun getAlphabetizedWords(): LiveData<List<Word>>

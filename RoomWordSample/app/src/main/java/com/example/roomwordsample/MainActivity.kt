@@ -4,6 +4,8 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -12,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
+    private val LOG_TAG = "HEXAGON-LOG::" + object {}.javaClass.enclosingClass?.simpleName
 
     private lateinit var wordViewModel: WordViewModel
     private val newWordActivityRequestCode = 1
@@ -30,6 +33,10 @@ class MainActivity : AppCompatActivity() {
             // Update the cached copy of the words in the adapter.
             words?.let { adapter.setWords(it) }
         })
+        val countObserver = Observer<Int> { newValue ->
+            Log.d(LOG_TAG, "${object {}.javaClass.enclosingMethod?.name.toString()}: CountObserver: $newValue")
+        }
+        wordViewModel.liveCounts.observe(this, countObserver)
 
         val fab = findViewById<FloatingActionButton>(R.id.fab)
         fab.setOnClickListener {
@@ -52,5 +59,11 @@ class MainActivity : AppCompatActivity() {
                 R.string.empty_not_saved,
                 Toast.LENGTH_LONG).show()
         }
+    }
+
+    fun count(view: View){
+        val c = wordViewModel.count()
+        Log.d(LOG_TAG, "${object {}.javaClass.enclosingMethod?.name.toString()}: Counts: $c")
+
     }
 }
