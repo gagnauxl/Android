@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2019 Razeware LLC
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in
+  ~ all copies or substantial portions of the Software.
+  ~
+  ~ Notwithstanding the foregoing, you may not use, copy, modify, merge, publish,
+  ~ distribute, sublicense, create a derivative work, and/or sell copies of the
+  ~ Software in any work that is designed, intended, or marketed for pedagogical or
+  ~ instructional purposes related to programming, coding, application development,
+  ~ or information technology.  Permission for such use, copying, modification,
+  ~ merger, publication, distribution, sublicensing, creation of derivative works,
+  ~ or sale is expressly withheld.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  ~ THE SOFTWARE.
+  -->
+<resources>
+  <array name="images">
+    <item>@drawable/labrador</item>
+    <item>@drawable/malamute</item>
+    <item>@drawable/husky</item>
+    <item>@drawable/pomeranian</item>
+    <item>@drawable/redbone</item>
+    <item>@drawable/rottweiler</item>
+    <item>@drawable/sheepdog</item>
+    <item>@drawable/springer</item>
+  </array>
+
+  <string-array name="names">
+    <item>Labrador</item>
+    <item>Malamute</item>
+    <item>Siberian Husky</item>
+    <item>Pomeranian</item>
+    <item>Redbone</item>
+    <item>Rottweiler</item>
+    <item>Belgian Sheepdog</item>
+    <item>Welsh Springer</item>
+  </string-array>
+
+  <string-array name="descriptions">
+    <item>The sweet-faced, lovable Labrador Retriever is America’s most popular dog breed. Labs are
+      friendly, outgoing, and high-spirited companions.</item>
+    <item>An immensely strong, heavy-duty worker of spitz type, the Alaskan Malamute is an
+      affectionate, loyal, and playful but dignified dog recognizable by his well-furred plumed
+      tail carried over the back, erect ears, and substantial bone.</item>
+    <item>The Siberian Husky, a thickly coated, compact sled dog of medium size and great
+      endurance, was developed to work in packs, pulling light loads at moderate speeds over vast
+      frozen expanses. Huskies are friendly, fastidious, and dignified.</item>
+    <item>The tiny Pomeranian, long a favorite of royals and commoners alike, has been called the
+      ideal companion. The glorious coat, smiling, foxy face, and vivacious personality have helped
+      make the Pom one of the world\'s most popular toy breeds.</item>
+    <item>The streamlined Redbone Coonhound, an American original, is even-tempered, mellow, and
+      kindly at home but a tiger on the trail. Vigorous activities like hunting and swimming
+      between long periods of rest is the rhythm of coonhound life.</item>
+    <item>The Rottweiler is a robust working, gentle playmate and protector within the family
+      circle, the Rottie observes the outside world with a self-assured aloofness.</item>
+    <item>The Belgian Sheepdog is a highly trainable herder whose versatility and intelligence is
+      the stuff of canine legend. This is a breed built for hard work, and plenty of it. These
+      sensitive souls crave human companionship and abhor neglect.</item>
+    <item>The Welsh Springer Spaniel is a vigorous, medium-sized bird dog of happy disposition,
+      known for versatility in the field, companionability at home, and dashing good looks
+      anywhere. The Welshie is among Britain\'s oldest sporting breeds.</item>
+  </string-array>
+
+  <string-array name="urls">
+    <item>https://www.akc.org/dog-breeds/labrador-retriever/</item>
+    <item>https://www.akc.org/dog-breeds/alaskan-malamute/</item>
+    <item>https://www.akc.org/dog-breeds/siberian-husky/</item>
+    <item>https://www.akc.org/dog-breeds/pomeranian/</item>
+    <item>https://www.akc.org/dog-breeds/redbone-coonhound/</item>
+    <item>https://www.akc.org/dog-breeds/rottweiler/</item>
+    <item>https://www.akc.org/dog-breeds/belgian-sheepdog/</item>
+    <item>https://www.akc.org/dog-breeds/welsh-springer-spaniel/</item>
+  </string-array>
+</resources>
