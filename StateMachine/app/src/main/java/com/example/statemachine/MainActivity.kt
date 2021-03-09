@@ -3,8 +3,23 @@ package com.example.statemachine
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.roche.hexagon.im.common.statemachine.Action
+import com.roche.hexagon.im.common.statemachine.State
+import com.roche.hexagon.im.common.statemachine.StateMachine
+import com.roche.hexagon.im.common.statemachine.Transition
 
 class MainActivity : AppCompatActivity() {
+
+    enum class States {
+        Idle,
+        Working
+    }
+
+    enum class Triggers {
+        OnWork,
+        OnStop
+    }
+
     private val LOG_TAG = "HEXAGON-LOG::" + object {}.javaClass.enclosingClass?.simpleName
 
     enum class State {
@@ -68,6 +83,29 @@ class MainActivity : AppCompatActivity() {
         )
         actionTable[0]()
         actionTable[Event.COMMAND.ordinal]()
+
+
+        val stateManager = StateMachine<States, Triggers>(
+            "StateManager", States.Idle
+        )
+        stateManager.add(State(States.Idle))
+        stateManager.add(State(States.Working,
+            entry = Action({Log.d(LOG_TAG, "${object {}.javaClass.enclosingMethod?.name.toString()}: entry action of Working")},
+                "Start Working")))
+        stateManager.add(
+            Transition(
+            Triggers.OnWork,
+            States.Idle, States.Working)
+        )
+        stateManager.add(
+            Transition(
+                Triggers.OnStop,
+                States.Working, States.Idle)
+        )
+        stateManager.start()
+        stateManager.trigger(Triggers.OnWork)
+        Log.d(LOG_TAG, stateManager.toString())
+        Log.d(LOG_TAG, "${object {}.javaClass.enclosingMethod?.name.toString()}: " + stateManager.current())
     }
 
     private fun action3() {
